@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#262c6e"/><stop offset="1" stop-color="#070a14"/></linearGradient></defs>
+  <rect width="64" height="64" rx="15" fill="url(#sky)"/>
+  <!-- the white snake, curled into an S -->
+  <path d="M44 17C30 11 15 14 16 24.5C17 35 47 30 47 41.5C47 52 29 54 15 47.5" fill="none" stroke="#f4f1ea" stroke-width="7.5" stroke-linecap="round"/><circle cx="45" cy="17.5" r="6.6" fill="#f4f1ea"/><circle cx="47" cy="15.6" r="1.7" fill="#070a14"/><path d="M51.5 19.5L56 21.2M56 21.2L58.6 19.6M56 21.2L58 23.6" stroke="#7cf5c8" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+</svg>

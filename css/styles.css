@@ -196,6 +196,15 @@ code {
         transition: transform 0.6s var(--ease);
 }
 
+/* the eye is cut out of the head, so it takes the colour of whatever is behind the nav */
+.brand-eye {
+        fill: var(--hero-bg);
+}
+
+.nav.is-scrolled .brand-eye {
+        fill: var(--bg);
+}
+
 .brand:hover .brand-mark {
         transform: rotate(-12deg) scale(1.1);
 }
