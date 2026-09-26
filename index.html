@@ -2,152 +2,396 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- hello, fellow view-source enthusiast. the backend is where the magic happens; this is just the lobby.
+         psst: type "snake" anywhere on the page. -->
     <meta charset="utf-8">
-    <meta author="David Okeke">
-    <meta name="description" content="David Okeke's Backend Engineer Portfolio">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" charset="UTF-8" href="/site.webmanifest" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <title>
-        David Okeke | Backend Developer
-    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="David Okeke">
+    <meta name="description" content="David Okeke is a backend engineer at Inlaks and co-founder and CTO of innKorp, building .NET and Postgres systems for banks, insurers and fintechs in Nigeria, Liberia and Tanzania.">
+    <meta name="theme-color" content="#070a14">
+    <link rel="canonical" href="https://dcwhitesnake.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dcwhitesnake.github.io/">
+    <meta property="og:title" content="David Okeke · Backend engineer & CTO">
+    <meta property="og:description" content="Backends for banks, insurers and fintechs in Nigeria, Liberia and Tanzania.">
+    <meta property="og:image" content="https://dcwhitesnake.github.io/img/og-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@dc_okeke">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // set the theme before first paint so nothing flashes
+        try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+        document.documentElement.classList.add("js");
+    </script>
+    <script src="js/main.js" defer></script>
+    <title>David Okeke · Backend engineer & CTO</title>
 </head>
 
-<body class="container mx-auto">
-    <div class="stuff">
-        <nav class="w-80 mx-auto">
-            <ul>
-                <li><a href="#c#-projects-container">C# Projects</a></li>
-                <li><a href="#python-projects-container">Python Projects</a></li>
-                <li><a href="#tools-container">Tools</a></li>
-            </ul>
-        </nav>
-        <main>
-            <div class="mx-auto w-80 banner">
-                <div class="profile-img-container mx-auto">
-                    <img src="/img/profilephoto_1.jpg" width="100" height="100" alt="profile image">
-                </div>
-                <div class="about-container">
-                    <h1>
-                        David Okeke
-                    </h1>
-                    <h2>Backend Developer:~/</h2>
-                </div>
+<body>
+    <a class="skip" href="#work">Skip to content</a>
+
+    <header class="nav">
+        <div class="shell nav-inner">
+            <a class="brand" href="#top" aria-label="Back to top">
+                <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 24c0-5 5-6 10-6s10-1 10-6-4-6-8-6c-3 0-5 1-6 3" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="12.4" cy="9" r="1.6" fill="currentColor"/></svg>
+                <span>dcwhitesnake</span>
+            </a>
+            <nav aria-label="Primary">
+                <ul>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#docs">Docs</a></li>
+                    <li><a href="#stack">Stack</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+                <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
+                <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- the hero: a starfield, a white snake, and one sentence that has to do all the work -->
+    <section id="top" class="hero">
+        <canvas class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+        <div class="shell hero-inner">
+            <p class="prompt"><span class="caret">&gt;</span> <span class="typed" data-text="whoami">whoami</span><span class="cursor" aria-hidden="true"></span></p>
+            <h1>David Okeke</h1>
+            <p class="hero-line">
+                I build the backends that
+                <span class="sr-only">banks, hospitals and fintechs</span>
+                <span class="rotator" aria-hidden="true">
+                    <span class="rotator-word is-on">banks</span>
+                    <span class="rotator-word">hospitals</span>
+                    <span class="rotator-word">fintechs</span>
+                </span>
+                quietly depend on.
+            </p>
+            <p class="hero-sub">
+                Backend engineer at <a href="https://www.inlaks.com/">Inlaks</a> and co-founder &amp; CTO of
+                <a href="https://innkorp.com">innKorp</a>. .NET, Postgres and Docker, in production in three countries.
+            </p>
+            <p class="hero-meta"><span class="open">Open to remote and on-site roles</span><span>B.Sc. Systems Engineering, UNILAG</span></p>
+            <div class="hero-cta">
+                <a class="btn btn-primary" href="#contact">Get in touch</a>
+                <a class="btn btn-ghost" href="#work">See the work</a>
             </div>
-            <div id="c#-projects-container" class="container-75">
-                <h3>C# Projects</h3>
-                <div>
-                    <h4>Earlyman Artstore <a href="https://github.com/DCWhiteSnake/Earlyman">Github</a></h4>
-                    <div class="project-img-container"><img src="/img/project.jpg" alt="project-1-img"></div>
-                    <p>Stack: ASP.NET Core, HTML, CSS, JS</p>
-                    <article>
-                        Earlyman Artstore is an MVC webstore that facilitates the purchase/sourcing of local artwork.
-                        This web app has other features such as, authentication & authorization, text-based search.
-                    </article>
+
+            <dl class="stats">
+                <div><dt>enrollees onboarded</dt><dd><span data-count="100">100</span>k+</dd></div>
+                <div><dt>partner institutions live</dt><dd><span data-count="10">10</span>+</dd></div>
+                <div><dt>countries in production</dt><dd><span data-count="3">3</span></dd></div>
+            </dl>
+        </div>
+
+        <p class="hint" aria-hidden="true"><span class="hint-dot"></span> move your cursor. the snake is friendly.</p>
+    </section>
+
+    <main>
+        <!-- where the code runs -->
+        <section id="map" class="section section-tight">
+            <div class="shell map-grid">
+                <div class="map-copy reveal">
+                    <p class="eyebrow">where my code runs</p>
+                    <h2>Running in <em>three</em> countries.</h2>
+                    <ol class="places">
+                        <li><button type="button" data-pin="ng"><span class="place-num">01</span><span class="place-name">Nigeria</span><span class="place-what">HMO management platform, innKorp</span></button></li>
+                        <li><button type="button" data-pin="lr"><span class="place-num">02</span><span class="place-name">Liberia</span><span class="place-what">Account Mapper</span></button></li>
+                        <li><button type="button" data-pin="tz"><span class="place-num">03</span><span class="place-name">Tanzania</span><span class="place-what">Omnichannel corporate banking</span></button></li>
+                    </ol>
                 </div>
-                <div>
-                    <h4>Repute Legal's API<a
-                            href="https://github.com/workshopapps/reputationmanagement.be.web/tree/development">Github</a>
-                    </h4>
-                    <div class="project-img-container"><img src="/img/project.jpg" alt="project-1-img"></div>
-                    <p>Stack: ASP.NETCore Web API</p>
-                    <article>
-                        This is an application mainly for the customer and managed by the lawyers. This products focuses to
-                        keep
-                        and manage a customer or user's reputation which a lawyer registered ensure bad reviews relating to
-                        the
-                        cutomer are removed and keep the customer business safe with less worries on bad reviews.
-                    </article>
-                </div>
-                <div>
-                    <h4>CSV Checksum <a href="https://github.com/DCWhiteSnake/CSV_Checksum">Github</a></h4>
-                    <div class="project-img-container"><img src="/img/project.jpg" alt="project-1-img"></div>
-                    <p>Stack: C#</p>
-                    <article>
-                        CSV_Checksum converts a csv file to CHIP-0007 compatible jsons, calculates the SHA-256 hash for each
-                        new
-                        json file, and then appends the hash value to the original csv.
-                    </article>
-                </div>
+
+                <figure class="map reveal">
+                    <svg viewBox="0 0 740 740" role="img" aria-labelledby="map-title">
+                        <title id="map-title">Map of Africa with Nigeria, Liberia and Tanzania highlighted</title>
+                        <defs>
+                            <pattern id="dots" width="11" height="11" patternUnits="userSpaceOnUse">
+                                <circle cx="5.5" cy="5.5" r="2.1" class="dot"/>
+                            </pattern>
+                        </defs>
+                        <g class="land">
+                            <path d="M142 22L302 9L311 12L301 41L332 51L385 76L400 59L425 53L449 60L499 68L523 67L525 81L538 108L555 140L572 184L595 224L627 250L631 264L650 276L680 270L713 262L714 276L698 310L653 360L625 384L597 420L593 448L605 487L607 530L569 559L549 578L553 595L555 619L526 640L510 679L479 710L456 720L400 728L384 722L382 695L365 666L352 646L345 609L318 553L321 532L336 504L332 468L323 440L318 428L297 404L287 386L294 365L297 340L283 331L260 337L234 316L212 318L198 324L179 333L160 327L123 336L92 317L68 295L63 285L44 261L32 254L25 233L35 220L40 199L30 172L41 143L55 119L71 101L97 88L104 76L108 57L124 44L132 40Z"/>
+                            <path d="M693 500L704 535L694 560L680 600L671 630L651 636L636 614L643 580L645 540L665 535L683 515Z"/>
+                        </g>
+                        <g class="arcs">
+                            <path class="arc" d="M234 300 Q163 215 92 300"/>
+                            <path class="arc" d="M234 300 Q430 220 593 432"/>
+                        </g>
+                        <!-- pins are mouse-only decoration; the list buttons are the accessible control -->
+                        <g class="pin" data-pin="ng" transform="translate(234 300)">
+                            <circle r="40" class="pin-glow"/>
+                            <circle r="9" class="pin-ring"/>
+                            <circle r="6" class="pin-core"/>
+                            <text x="14" y="-12">01</text>
+                        </g>
+                        <g class="pin" data-pin="lr" transform="translate(92 300)">
+                            <circle r="40" class="pin-glow"/>
+                            <circle r="9" class="pin-ring"/>
+                            <circle r="6" class="pin-core"/>
+                            <text x="-14" y="-12" text-anchor="end">02</text>
+                        </g>
+                        <g class="pin" data-pin="tz" transform="translate(593 432)">
+                            <circle r="40" class="pin-glow"/>
+                            <circle r="9" class="pin-ring"/>
+                            <circle r="6" class="pin-core"/>
+                            <text x="-14" y="26" text-anchor="end">03</text>
+                        </g>
+                    </svg>
+                </figure>
             </div>
-            <div id="python-projects-container" class="container-75">
-                <h3>Python Projects</h3>
-                <div>
-                    <h4>Bird-App</h4>
-                    <div class="project-img-container"><img src="/img/project.jpg" alt="project-1-img"></div>
-                    <p>Stack: Flask, RabbitMQ, JavaScript</p>
-                    <article>
-                        A social media application that lets users subscribe/unsubscribe to messages from other users. Other
-                        features include auth, searching by name, profile viewing, infinite scroll, image upload.
-                    </article>
-                </div>
-                <div>
-                    <h4>Consolib</h4>
-                    <div class="project-img-container"><img src="/img/project.jpg" alt="project-1-img"></div>
-                    <p>Stack: Python</p>
-                    <article>
-                        A console based library app. Uses the command pattern
-                    </article>
-                </div>
-                <div>
-                    <h4>Console Contacts</h4>
-                    <div class="project-img-container"><img src="/img/project.jpg" alt="project-1-img"></div>
-                    <p>Stack: HTML CSS JS</p>
-                    <article>
-                        A console based non-trivial contacts manager for storing, sorting and retrieving contacts. Uses the
-                        command and options pattern extensively.
-                    </article>
-                </div>
-            </div>
-            <div id="tools-container" class="container-75">
-                <h3>Tools</h3>
-                <div class="row">
-                    <div class="col mx-auto">
-                        <h4>Languages</h4>
-                        <div class="col">
-                            <ul>
-                                <li>C#</li>
-                                <li>Python</li>
-                                <li>JavaScript</li>
-                                <li>C</li>
-                                <li>CSS</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h4>Frameworks</h4>
+        </section>
+
+        <!-- the work -->
+        <section id="work" class="section">
+            <div class="shell">
+                <header class="section-head reveal">
+                    <p class="eyebrow">experience</p>
+                    <h2>Things I've <em>built</em></h2>
+                </header>
+
+                <!-- Inlaks -->
+                <article class="role reveal">
+                    <header class="role-head">
                         <div>
-                            <ul>
-                                <li>ASP.NET</li>
-                                <li>Django</li>
-                            </ul>
+                            <h3><a href="https://www.inlaks.com/">Inlaks</a></h3>
+                            <p class="role-title">Backend Software Engineer</p>
                         </div>
+                        <p class="role-when">Feb 2025 — present</p>
+                    </header>
+                    <p class="role-note">Built one bank platform end to end and led the backend on two more, all on .NET 10.</p>
+
+                    <div class="projects">
+                        <section class="project" id="account-mapper">
+                            <div class="project-meta">
+                                <p class="project-place">Liberia · 2025 — present</p>
+                                <p class="metric"><span data-count="10">10</span>+</p>
+                                <p class="metric-label">partner institutions onboarded</p>
+                            </div>
+                            <div class="project-body">
+                                <h4>Account Mapper</h4>
+                                <p class="project-client">Partner platform for a bank, live in production</p>
+                                <p>
+                                    I designed and built the platform end to end, and led the stakeholder meetings that shaped it.
+                                    Partner institutions send account records to the bank by API or SFTP and look up account names,
+                                    and bank staff and partners each get their own portal.
+                                </p>
+                                <ul class="points">
+                                    <li>Took it from requirements to production, working directly with the bank's stakeholders to turn their needs into a system partners could actually onboard onto.</li>
+                                    <li>Architected it as five services behind one gateway: authentication, partner onboarding, record ingestion, name enquiry and reporting.</li>
+                                    <li>Made it safe to open up to outside institutions: no partner can reach another's data, sessions can be revoked, and logins use two factors.</li>
+                                    <li>Large uploads never block anyone. Bulk and SFTP ingestion run in the background, in parallel per partner.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="project" id="sunu-hmo">
+                            <div class="project-meta">
+                                <p class="project-place">Nigeria · 2025 — present</p>
+                                <p class="metric"><span data-count="100">100</span>k+</p>
+                                <p class="metric-label">enrollees onboarded</p>
+                            </div>
+                            <div class="project-body">
+                                <h4>HMO management platform</h4>
+                                <p class="project-client">Insurance management for <a href="https://www.sunu-group.com/">Sunu Health</a></p>
+                                <p>
+                                    Runs the whole HMO: corporate clients, enrollees, the hospital network, pre-authorisations,
+                                    claims and subscriptions, with portals for staff, hospitals, employers and members.
+                                </p>
+                                <ul class="points">
+                                    <li>Benefit usage is fully traceable: an append-only ledger with reversals, and a deploy that halts itself if balances and ledger disagree.</li>
+                                    <li>Claims move without chasing. I built the vetting workflow and automatic batching, with deadlines and reminders.</li>
+                                    <li>Bulk enrolment no longer creates duplicates. Uploads run in the background with progress tracking.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="project" id="omnichannel">
+                            <div class="project-meta">
+                                <p class="project-place">Tanzania · 2026</p>
+                                <p class="metric">3</p>
+                                <p class="metric-label">channels: web, mobile, back office</p>
+                            </div>
+                            <div class="project-body">
+                                <h4>Omnichannel corporate banking</h4>
+                                <p class="project-client">Corporate internet banking for a bank</p>
+                                <p>
+                                    Onboarding, approvals, limits, beneficiaries, cards and cheques for corporate customers and
+                                    bank staff, in a 17-module .NET monolith.
+                                </p>
+                                <ul class="points">
+                                    <li>Accounts that are hard to hijack: one session per user, device binding and PIN lockout on mobile, and safe token refresh.</li>
+                                    <li>Users can recover access on their own, by national ID, OTP, email or SMS, without calling the bank.</li>
+                                    <li>Customers can change their own limits, and every change still goes through the bank's two-person approval.</li>
+                                </ul>
+                            </div>
+                        </section>
                     </div>
-                    <div class="col">
-                        <h4>Environments</h4>
+                </article>
+
+                <!-- innKorp -->
+                <article class="role reveal">
+                    <header class="role-head">
                         <div>
-                            <ul>
-                                <li>Linux/Windows</li>
-                                <li>VSCode</li>
-                                <li>Visual Studio</li>
-                                <li>Postman</li>
-                                <li>Swagger</li>
-                            </ul>
+                            <h3><a href="https://innkorp.com">innKorp</a></h3>
+                            <p class="role-title">Co-founder &amp; CTO</p>
                         </div>
+                        <p class="role-when">2026 — present</p>
+                    </header>
+                    <div class="projects">
+                        <section class="project">
+                            <div class="project-meta">
+                                <p class="project-place">Nigeria · 2026 — present</p>
+                                <p class="project-link"><a href="https://innkorp.com">innkorp.com ↗</a></p>
+                            </div>
+                            <div class="project-body">
+                                <h4>A KYC vault for small businesses</h4>
+                                <p>
+                                    innKorp gets Nigerian small businesses' KYC paperwork done, keeps it in a vault they own,
+                                    and shares it with fintechs only with their consent. I lead the technology and write much of the code.
+                                </p>
+                                <ul class="points">
+                                    <li>Fintechs plug in through a documented partner API, an embeddable widget and signed webhooks.</li>
+                                    <li>Business data stays private by design. Postgres denies access by default, and every read goes through the server.</li>
+                                    <li>Business names are checked against the Corporate Affairs Commission's rules before anyone files.</li>
+                                </ul>
+                            </div>
+                        </section>
                     </div>
+                </article>
+
+                <!-- education -->
+                <article class="role role-edu reveal">
+                    <header class="role-head">
+                        <div>
+                            <h3>University of Lagos</h3>
+                            <p class="role-title">B.Sc. (Hons) Systems Engineering</p>
+                        </div>
+                        <!-- TODO(david): graduation year (and class of degree, if you want it) -->
+                        <p class="role-when">Education</p>
+                    </header>
+                </article>
+            </div>
+        </section>
+
+        <!-- docs: the part most engineers skip -->
+        <section id="docs" class="section section-docs">
+            <div class="shell docs-grid">
+                <div class="reveal">
+                    <p class="eyebrow">docs are a feature</p>
+                    <h2>Swagger tells you the <em>shape</em>.<br>A guide tells you the <em>story</em>.</h2>
+                    <p class="section-lead">
+                        A list of endpoints won't tell a mobile developer which call comes first, or what to do when an
+                        account locks. So on the omnichannel platform, each API serves a hand-written guide next to its
+                        Swagger page, with the flows, sample requests and errors you'll actually hit. The guide changes in
+                        the same pull request as the code, so it never drifts, and every build syncs the team's Postman collection.
+                    </p>
+                </div>
+
+                <!-- a tiny, stylised docs page. not a screenshot; a love letter. -->
+                <figure class="docs-mock reveal">
+                    <div class="mock mock-swagger" aria-hidden="true">
+                        <p class="mock-title">swagger.json</p>
+                        <p><b class="m post">POST</b> /auth/login</p>
+                        <p><b class="m post">POST</b> /auth/otp/verify</p>
+                        <p><b class="m get">GET</b> /accounts</p>
+                        <p class="mock-shrug">…and then what?</p>
+                    </div>
+                    <div class="mock mock-guide" aria-hidden="true">
+                        <p class="mock-title">docs.html · Corporate API: Consumption Guide</p>
+                        <p class="mock-h">3. Login</p>
+                        <p>Signing in is two steps. The password gets you an <code>otpReference</code>, not a token.</p>
+                        <ol>
+                            <li>POST <code>/auth/login</code> → <code>otpReference</code></li>
+                            <li>POST <code>/auth/otp/verify</code> → tokens</li>
+                        </ol>
+                        <p class="mock-note"><b>Heads up:</b> the fifth wrong password locks the account. Show the user
+                            <code>retryAfter</code>, not a generic error.</p>
+                    </div>
+                    <figcaption>Illustrative, not a real excerpt.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- the toolbox -->
+        <section id="stack" class="section">
+            <div class="shell">
+                <header class="section-head reveal">
+                    <p class="eyebrow">toolbox</p>
+                    <h2>What I <em>reach for</em></h2>
+                </header>
+                <div class="stack reveal">
+                    <div class="stack-row"><h3>Languages</h3><p><span class="hot">C#</span><span class="hot">SQL</span><span>TypeScript</span><span>Python</span><span>JavaScript</span></p></div>
+                    <div class="stack-row"><h3>Backend</h3><p><span class="hot">ASP.NET Core</span><span class="hot">EF Core</span><span>Dapper</span><span>MediatR</span><span>Hangfire</span><span>Quartz</span><span>Polly</span><span>YARP</span><span>Next.js</span></p></div>
+                    <div class="stack-row"><h3>Data</h3><p><span class="hot">SQL Server</span><span class="hot">PostgreSQL</span><span>Redis</span><span>MongoDB</span><span>Supabase</span><span>RabbitMQ</span></p></div>
+                    <div class="stack-row"><h3>Ops</h3><p><span class="hot">Docker</span><span>OpenTelemetry</span><span>Serilog</span><span>Vercel</span><span>Git</span></p></div>
+                    <div class="stack-row"><h3>Practice</h3><p><span>Domain-driven design</span><span>CQRS</span><span>Transactional outbox</span><span>xUnit &amp; NUnit</span><span>Code review on every change</span></p></div>
                 </div>
             </div>
-            </div>
-            <footer class="container-75">
-                <div>
-                    &copy; 2023 - Today
+        </section>
+
+        <!-- archaeology. these are older, but they still compile. probably. -->
+        <section id="archive" class="section section-tight">
+            <div class="shell">
+                <header class="section-head reveal">
+                    <p class="eyebrow">earlier</p>
+                    <h2>Where it <em>started</em></h2>
+                </header>
+                <div class="archive-grid">
+                    <a class="card mini reveal" href="https://github.com/DCWhiteSnake/Earlyman">
+                        <p class="mini-when">2022 — 2023</p>
+                        <h3>Earlyman Artstore <span aria-hidden="true">↗</span></h3>
+                        <p>An online store for local artwork, with accounts, roles and search. ASP.NET Core MVC.</p>
+                    </a>
+                    <a class="card mini reveal" href="https://github.com/workshopapps/reputationmanagement.be.web/tree/development">
+                        <p class="mini-when">2022</p>
+                        <h3>Repute Legal API <span aria-hidden="true">↗</span></h3>
+                        <p>A team-built API where lawyers handle requests to remove harmful reviews. ASP.NET Core.</p>
+                    </a>
+                    <a class="card mini reveal" href="https://github.com/DCWhiteSnake/CSV_Checksum">
+                        <p class="mini-when">2022</p>
+                        <h3>CSV Checksum <span aria-hidden="true">↗</span></h3>
+                        <p>Turns CSV rows into CHIP-0007 JSON and signs each file with a SHA-256 hash. C#.</p>
+                    </a>
                 </div>
-            </footer>
-        </main>
-    </div>
+            </div>
+        </section>
+
+        <!-- the ask -->
+        <section id="contact" class="section contact">
+            <div class="shell reveal">
+                <img class="avatar" src="/img/profilephoto_1.jpg" width="96" height="96" alt="Portrait of David Okeke">
+                <h2>Got something that has to <em>just work</em>?</h2>
+                <p class="section-lead">Money moving, claims clearing, documents sharing. I like the hard, boring, important parts.</p>
+                <div class="hero-cta">
+                    <a class="btn btn-primary" href="mailto:davidokeke.c@gmail.com">davidokeke.c@gmail.com</a>
+                </div>
+                <p class="socials">
+                    <a href="https://www.linkedin.com/in/david-okeke-chihurumnanya/">LinkedIn</a>
+                    <a href="https://x.com/dc_okeke">X · @dc_okeke</a>
+                    <a href="https://github.com/DCWhiteSnake">GitHub</a>
+                </p>            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="shell footer-inner">
+            <p>© 2023–present David Okeke. Last shed its skin September 2026.</p>
+            <p class="mono">// no frameworks were harmed in the making of this page</p>
+        </div>
+    </footer>
+
+    <div class="toast" role="status" aria-live="polite"></div>
 </body>
 
 </html>
