@@ -2,20 +2,17 @@
 <html lang="en">
 
 <head>
-    <!-- hello, fellow view-source enthusiast. psst: type "snake" anywhere on the page. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="David Okeke">
-    <meta name="description" content="David Okeke is a backend engineer at Inlaks and co-founder and CTO of innKorp, building software for banks, health insurers and small businesses in Nigeria, Liberia and Tanzania.">
+    <meta name="description" content="Every API David Okeke ships comes with a guide for whoever has to build against it.">
     <meta name="theme-color" content="#08090b">
-    <link rel="canonical" href="https://dcwhitesnake.github.io/">
+    <link rel="canonical" href="https://dcwhitesnake.github.io/how-i-work/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dcwhitesnake.github.io/">
-    <meta property="og:title" content="David Okeke · Backend engineer & CTO">
-    <meta property="og:description" content="Software for banks, health insurers and small businesses in Nigeria, Liberia and Tanzania.">
+    <meta property="og:url" content="https://dcwhitesnake.github.io/how-i-work/">
+    <meta property="og:title" content="How I work · David Okeke">
+    <meta property="og:description" content="Every API I ship comes with a guide.">
     <meta property="og:image" content="https://dcwhitesnake.github.io/img/og-card.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:creator" content="@dc_okeke">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -28,7 +25,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/main.js" defer></script>
     <script data-goatcounter="https://davidokeke.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-    <title>David Okeke · Backend engineer & CTO</title>
+    <title>How I work · David Okeke</title>
 </head>
 
 <body>
@@ -42,7 +39,7 @@
             <ul>
                 <li><a href="/about/">About</a></li>
                 <li><a href="/work/">Work</a></li>
-                <li><a href="/how-i-work/">How I work</a></li>
+                <li><a href="/how-i-work/" aria-current="page">How I work</a></li>
                 <li><a href="/David_Okeke_CV.pdf" data-goatcounter-click="nav-cv">CV</a></li>
             </ul>
         </nav>
@@ -52,17 +49,40 @@
     </header>
 
     <main id="main">
-        <section class="home">
-            <h1>David Okeke</h1>
-            <p class="home-role">Backend engineer at <a href="https://www.inlaks.com/">Inlaks</a>. Co-founder &amp; CTO of <a href="https://innkorp.com">innKorp</a>.</p>
-            <p class="home-line">I build the software behind banks, health insurers and small businesses in Nigeria, Liberia and Tanzania.</p>
-            <button class="start" type="button" data-palette-open>
-                <span class="keys">Press <kbd data-mod>ctrl</kbd> <kbd>K</kbd> to start</span>
-                <span class="touch">Tap to start</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-        </section>
-        <canvas class="snake" aria-hidden="true"></canvas>
+        <article class="page">
+            <h1 class="page-title">Every API I ship comes with a <span class="gradient">guide</span>.</h1>
+            <p class="lead">Written for whoever has to build against it: which call comes first, and what to do when things go wrong. It changes in the same pull request as the code, so it never falls behind.</p>
+
+            <figure class="mock-figure" style="margin:0">
+                <div class="mock" aria-hidden="true">
+                    <p class="mock-title">Banking API · Integration guide</p>
+                    <div class="guide-body">
+                        <ol class="guide-toc">
+                            <li>Conventions</li>
+                            <li>Onboarding</li>
+                            <li>KYC verification</li>
+                            <li class="is-here">Login</li>
+                            <li>Accounts</li>
+                            <li>Limits</li>
+                            <li>Standing instructions</li>
+                            <li>Beneficiaries</li>
+                            <li>Dashboard</li>
+                            <li>Team members</li>
+                        </ol>
+                        <div class="guide-page">
+                            <p class="mock-h">Login</p>
+                            <p>Signing in takes two calls. The password gets you an <code>otpReference</code>, not a token.</p>
+                            <ol>
+                                <li><code>POST /auth/login</code></li>
+                                <li><code>POST /auth/otp/verify</code></li>
+                            </ol>
+                            <p class="mock-note">Too many wrong passwords lock the account. Show the user <code>retryAfter</code> instead of a generic error.</p>
+                        </div>
+                    </div>
+                </div>
+                <figcaption class="mock-caption">An illustrative sample. The real guides stay with the clients.</figcaption>
+            </figure>
+        </article>
     </main>
 
     <footer class="footer">
