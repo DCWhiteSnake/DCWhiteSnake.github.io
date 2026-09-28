@@ -142,18 +142,26 @@
         var scale = 1;
         var body = [];
 
+        // colours follow the theme, so the snake reads on both a night sky and a light hero
+        function heroVar(name) {
+                return getComputedStyle(root).getPropertyValue(name).trim();
+        }
+
         // the glow is drawn once into a sprite and stamped per segment; shadowBlur every frame is too slow on phones
         var sprite = document.createElement("canvas");
         sprite.width = sprite.height = 64;
-        (function () {
+        function drawSprite() {
                 var s = sprite.getContext("2d");
+                s.clearRect(0, 0, 64, 64);
                 s.shadowColor = "rgba(150, 240, 205, 0.85)";
                 s.shadowBlur = 16;
-                s.fillStyle = "#f4f1ea";
+                s.fillStyle = heroVar("--hero-snake") || "#f4f1ea";
                 s.beginPath();
                 s.arc(32, 32, 12, 0, Math.PI * 2);
                 s.fill();
-        })();
+        }
+        drawSprite();
+        if (toggle) toggle.addEventListener("click", drawSprite);
         var pointer = { x: 0, y: 0, at: -1e9 };
         var rainbowUntil = 0;
         var running = true;
@@ -207,17 +215,19 @@
         function colourAt(i, t) {
                 if (t < rainbowUntil) return "hsl(" + ((t / 8 + i * 12) % 360) + " 90% 72%)";
                 var a = 0.95 - (i / SEGMENTS) * 0.5;
-                return "rgba(244, 241, 234, " + a + ")";
+                var c = heroVar("--hero-snake-rgb") || "244, 241, 234";
+                return "rgba(" + c + ", " + a + ")";
         }
 
         function drawStars(t) {
+                var starColour = heroVar("--hero-star") || "#e3f5ec";
                 for (var s = 0; s < stars.length; s++) {
                         var st = stars[s];
                         var twinkle = reduceMotion ? 0.7 : 0.45 + 0.55 * Math.sin(t * 0.001 * st.speed + st.phase);
                         ctx.globalAlpha = Math.max(0.08, twinkle) * 0.85;
                         ctx.beginPath();
                         ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
-                        ctx.fillStyle = "#e3f5ec";
+                        ctx.fillStyle = starColour;
                         ctx.fill();
                 }
                 ctx.globalAlpha = 1;

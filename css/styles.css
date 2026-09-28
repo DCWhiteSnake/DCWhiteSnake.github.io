@@ -12,10 +12,16 @@
         --grid-line: rgba(21, 22, 31, 0.05);
         --shadow: 0 1px 2px rgba(21, 22, 31, 0.04), 0 12px 32px -12px rgba(21, 22, 31, 0.12);
 
-        /* the hero is always night-time, whatever the theme */
-        --hero-bg: #050b09;
-        --hero-text: #edf3f0;
-        --hero-muted: #a9b8b1;
+        --hero-bg: #eef1ee;
+        --hero-text: #101712;
+        --hero-muted: #4b564e;
+        --hero-glow-1: #cdeee0;
+        --hero-glow-2: #cfe4ea;
+        --hero-star: #0a7a5a;
+        --hero-snake: #0f2a20;
+        --hero-snake-rgb: 15, 42, 32;
+        --hero-btn-text: #f4f5f7;
+        --hero-btn-bg: #101712;
 
         --display: Fraunces, "Iowan Old Style", Georgia, serif;
         --sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -37,6 +43,17 @@
                 --map-dot: #26352f;
                 --grid-line: rgba(255, 255, 255, 0.035);
                 --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 40px -16px rgba(0, 0, 0, 0.6);
+
+                --hero-bg: #050b09;
+                --hero-text: #edf3f0;
+                --hero-muted: #a9b8b1;
+                --hero-glow-1: #0f3328;
+                --hero-glow-2: #0a2230;
+                --hero-star: #e3f5ec;
+                --hero-snake: #f4f1ea;
+                --hero-snake-rgb: 244, 241, 234;
+                --hero-btn-text: #06110d;
+                --hero-btn-bg: #f4f5f7;
         }
 }
 
@@ -52,6 +69,17 @@
         --map-dot: #26352f;
         --grid-line: rgba(255, 255, 255, 0.035);
         --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 40px -16px rgba(0, 0, 0, 0.6);
+
+        --hero-bg: #050b09;
+        --hero-text: #edf3f0;
+        --hero-muted: #a9b8b1;
+        --hero-glow-1: #0f3328;
+        --hero-glow-2: #0a2230;
+        --hero-star: #e3f5ec;
+        --hero-snake: #f4f1ea;
+        --hero-snake-rgb: 244, 241, 234;
+        --hero-btn-text: #06110d;
+        --hero-btn-bg: #f4f5f7;
 }
 
 /* General */
@@ -291,8 +319,8 @@ html[data-theme="dark"] .theme-toggle .i-moon {
         overflow: hidden;
         isolation: isolate;
         background:
-                radial-gradient(ellipse 80% 60% at 70% 0%, #0f3328 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 0% 100%, #0a2230 0%, transparent 60%),
+                radial-gradient(ellipse 80% 60% at 70% 0%, var(--hero-glow-1) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 0% 100%, var(--hero-glow-2) 0%, transparent 60%),
                 var(--hero-bg);
         color: var(--hero-text);
 }
@@ -384,38 +412,12 @@ h1 {
         font-weight: 400;
 }
 
-/* a one-line window; the track slides up through it, holding on each line like a departure board */
-.reel {
-        display: block;
-        height: 1.3em;
-        overflow: hidden;
-        user-select: none;
-        -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
-        mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
-}
-
-.reel-track {
-        display: block;
-        animation: reel 14s var(--ease) infinite;
-}
-
-.reel-track span {
-        display: block;
-        height: 1.3em;
+.hero-highlight {
         font-style: italic;
-        white-space: nowrap;
         background: linear-gradient(90deg, #d6fff0, #7cf5c8 55%, #3fcf9f);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-}
-
-@keyframes reel {
-        0%, 21% { transform: translateY(0); }
-        25%, 46% { transform: translateY(-1.3em); }
-        50%, 71% { transform: translateY(-2.6em); }
-        75%, 96% { transform: translateY(-3.9em); }
-        100% { transform: translateY(-5.2em); }
 }
 
 .hero-sub {
@@ -453,8 +455,8 @@ h1 {
 }
 
 .btn-primary {
-        color: #06110d;
-        background: #f4f5f7;
+        color: var(--hero-btn-text);
+        background: var(--hero-btn-bg);
         box-shadow: 0 8px 30px -10px rgba(124, 245, 200, 0.35);
 }
 
@@ -998,11 +1000,6 @@ html.js .reveal.is-visible {
                 scroll-padding-top: 108px;
         }
 
-        /* the longest reel line has to fit one phone line; the keyframes are in em, so the steps scale too */
-        .reel {
-                font-size: 0.78em;
-        }
-
         .nav-inner {
                 flex-wrap: wrap;
                 height: auto;
@@ -1099,10 +1096,5 @@ html.js .reveal.is-visible {
 
         .pin .pin-ring {
                 opacity: 0;
-        }
-
-        /* the reel rests on its first line */
-        .reel-track {
-                animation: none;
         }
 }
