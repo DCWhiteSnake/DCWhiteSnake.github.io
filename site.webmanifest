@@ -1,5 +1,5 @@
 {
-        "name": "David Okeke · Backend engineer & CTO",
+        "name": "David Okeke · Software engineer & CTO",
         "short_name": "David Okeke",
         "icons": [
                 {
@@ -20,7 +20,7 @@
                         "type": "image/svg+xml"
                 }
         ],
-        "theme_color": "#070a14",
-        "background_color": "#070a14",
+        "theme_color": "#050b09",
+        "background_color": "#050b09",
         "display": "standalone"
 }

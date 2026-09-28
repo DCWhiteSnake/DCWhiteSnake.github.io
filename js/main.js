@@ -53,32 +53,6 @@
                 });
         }
 
-        /* ---------- > whoami ---------- */
-        var typed = $(".typed");
-        if (typed && !reduceMotion) {
-                var text = typed.dataset.text;
-                typed.textContent = "";
-                var i = 0;
-                setTimeout(function type() {
-                        typed.textContent = text.slice(0, ++i);
-                        if (i < text.length) setTimeout(type, 90 + Math.random() * 80);
-                }, 500);
-        }
-
-        /* ---------- banks / hospitals / fintechs / small businesses ---------- */
-        var words = $$(".rotator-word");
-        if (words.length > 1 && !reduceMotion) {
-                var w = 0;
-                setInterval(function () {
-                        var out = words[w];
-                        w = (w + 1) % words.length;
-                        out.classList.remove("is-on");
-                        out.classList.add("is-leaving");
-                        setTimeout(function () { out.classList.remove("is-leaving"); }, 600);
-                        words[w].classList.add("is-on");
-                }, 2600);
-        }
-
         /* ---------- scroll reveals and counters ---------- */
         function countUp(el) {
                 var end = parseInt(el.dataset.count, 10);
@@ -110,30 +84,39 @@
                         revealObserver.observe(el);
                 });
 
-                // the hero counters run as soon as the page opens
-                $$(".stats [data-count]").forEach(countUp);
         } else {
                 $$(".reveal").forEach(function (el) { el.classList.add("is-visible"); });
         }
 
-        /* ---------- map pins and the country list light each other up ---------- */
-        var pinTargets = { ng: "#sunu-hmo", lr: "#account-mapper", tz: "#omnichannel" };
-        function setActive(code) {
-                $$("[data-pin]").forEach(function (el) {
-                        el.classList.toggle("is-active", el.dataset.pin === code);
-                });
+        /* ---------- the work list and the map light each other up ---------- */
+        var builds = $$(".build");
+        var pins = $$(".pin");
+        var scrolledTo = null; // the entry in the middle of the screen, which is what shows when nothing is hovered
+        function show(build) {
+                builds.forEach(function (b) { b.classList.toggle("is-active", b === build); });
+                pins.forEach(function (p) { p.classList.toggle("is-active", !!build && p.dataset.pin === build.dataset.pin); });
         }
-        $$("[data-pin]").forEach(function (el) {
-                el.addEventListener("pointerenter", function () { setActive(el.dataset.pin); });
-                el.addEventListener("pointerleave", function () { setActive(null); });
-                if (el.tagName !== "BUTTON") return;
-                el.addEventListener("focus", function () { setActive(el.dataset.pin); });
-                el.addEventListener("blur", function () { setActive(null); });
-                el.addEventListener("click", function () {
-                        var target = $(pinTargets[el.dataset.pin]);
-                        if (target) target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
-                });
+        builds.forEach(function (b) {
+                b.addEventListener("pointerenter", function () { show(b); });
+                b.addEventListener("pointerleave", function () { show(scrolledTo); });
         });
+        // hovering a pin picks the first entry for that country
+        pins.forEach(function (p) {
+                p.addEventListener("pointerenter", function () {
+                        show(builds.filter(function (b) { return b.dataset.pin === p.dataset.pin; })[0]);
+                });
+                p.addEventListener("pointerleave", function () { show(scrolledTo); });
+        });
+        if ("IntersectionObserver" in window) {
+                var middle = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                                if (entry.isIntersecting) scrolledTo = entry.target;
+                                else if (scrolledTo === entry.target) scrolledTo = null;
+                        });
+                        show(scrolledTo);
+                }, { rootMargin: "-45% 0px -45% 0px" });
+                builds.forEach(function (b) { middle.observe(b); });
+        }
 
         /* ---------- toast ---------- */
         var toast = $(".toast");
@@ -164,7 +147,7 @@
         sprite.width = sprite.height = 64;
         (function () {
                 var s = sprite.getContext("2d");
-                s.shadowColor = "rgba(170, 190, 255, 0.9)";
+                s.shadowColor = "rgba(150, 240, 205, 0.85)";
                 s.shadowBlur = 16;
                 s.fillStyle = "#f4f1ea";
                 s.beginPath();
@@ -214,7 +197,7 @@
                                 y: H * 0.42 + Math.sin(t * 0.0011) * Math.min(H * 0.2, 160)
                         };
                 }
-                // narrow screens: meander along the bottom edge, under the stats
+                // narrow screens: meander along the bottom edge, under the buttons
                 return {
                         x: W * 0.5 + Math.sin(t * 0.0005) * W * 0.36,
                         y: H - 34 + Math.sin(t * 0.0013) * 10
@@ -234,7 +217,7 @@
                         ctx.globalAlpha = Math.max(0.08, twinkle) * 0.85;
                         ctx.beginPath();
                         ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
-                        ctx.fillStyle = "#dfe4ff";
+                        ctx.fillStyle = "#e3f5ec";
                         ctx.fill();
                 }
                 ctx.globalAlpha = 1;
@@ -282,7 +265,7 @@
                 }
 
                 // two small eyes, looking where it's going
-                ctx.fillStyle = "#0b0e1c";
+                ctx.fillStyle = "#050b09";
                 [-1, 1].forEach(function (side) {
                         var ex = head.x + (Math.cos(angle) * 3 + Math.cos(angle + side * Math.PI / 2) * 3.6) * scale;
                         var ey = head.y + (Math.sin(angle) * 3 + Math.sin(angle + side * Math.PI / 2) * 3.6) * scale;
@@ -339,7 +322,7 @@
                                 x: body[SEGMENTS - 1].x, y: body[SEGMENTS - 1].y,
                                 vx: (Math.random() - 0.5) * 0.8, vy: (Math.random() - 0.5) * 0.8,
                                 r: Math.random() * 1.8 + 0.6, life: 1,
-                                colour: t < rainbowUntil ? colourAt(Math.random() * 36, t) : "#cfd8ff"
+                                colour: t < rainbowUntil ? colourAt(Math.random() * 36, t) : "#c9f7e3"
                         });
                 }
         }
